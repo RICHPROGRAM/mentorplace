@@ -1,0 +1,82 @@
+{% extends "extend.html" %}
+
+{% block content_block %}
+<div class="space"></div>
+<div class="space"></div>
+<div class="container">
+	<h4> Listing </h4>
+
+ <form method='post' role="form"  enctype = "multipart/form-data">
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="username" placeholder="Username">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="name" placeholder="Name">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="title" placeholder="Listing Title">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="category" placeholder="Category">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="bio" placeholder="Your sales pitch/Bio">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="background" placeholder="Background">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="qualification" placeholder="Qualification">
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="skills" placeholder="Skills">
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="specialities" placeholder="specialities">
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" name="languages" placeholder="Languages">
+    </div>
+  </div>
+
+    <div class="form-group row">
+    <div class="col-sm-12">
+       <input type = "hidden" name = "key" value="thinklearnlead" />
+       <input type = "file" name = "photo" accept="image/*" onchange="loadFile(event)"/>
+    </div>
+  </div>
+  <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+ </form>
+</div>
+{% endblock %}

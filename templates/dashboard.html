@@ -1,0 +1,253 @@
+{% extends "extend.html" %}
+
+
+{% block content_block %}
+
+
+
+  <div class= "container-fluid">
+            <!-- Blog Post Content Column -->
+            <br>
+             <h2> Super Admin Panel </h2>
+             <button class="tablink" class="btn btn-default pull-left" onclick="openPage('dashboard', this, '')" id="defaultOpen">Dashboard</button>
+             <button class="tablink" class="btn btn-default pull-left" onclick="openPage('registered_users', this, '')" >Registered Users</button>
+             <button class="tablink" class="btn btn-default pull-left" onclick="openPage('admin', this, '')" >Admin</button>
+             <br>
+
+           <div id="dashboard" class="tabcontent">
+
+             <br>
+             <h2> Dashboard </h2>
+             <a href="/signup" target="_blank"><button class="btn btn-default pull-left">Create a new website</button></a>
+
+             <br>
+             <br>
+
+<!--             <a href="/bank" target="_blank"><button class="btn btn-default">Bank Details</button></a>
+             <a href="/team" target="_blank"><button class="btn btn-default">Team Members</button></a>
+             <a href="/action" target="_blank"><button class="btn btn-default">We in Action</button></a> 
+             <a href="/logout"><button class="btn btn-default">Logout</button></a> -->
+          
+<div style="overflow-x:auto;">
+   
+             
+
+<div class="topnav">
+
+<h2>All NGOs - Information</h2>
+
+
+   <div class="search-container">
+    <form action="/dashboard">
+      <input type="text" class="search" placeholder="Search.." name="search">
+      <button type="submit" class="btn btn-default"> Submit</button>
+    </form>
+  </div>
+</div>
+<span class="counter pull-right"></span>
+<br>
+
+
+          <div class="table-responsive">
+          <table class="table table-striped results">
+
+            <thead>
+              <tr>
+                <th>S.No </th>
+                <th>Website</th>
+                <th>NGO - Name</th>
+                <th>About</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                
+              </tr>
+               <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+            </thead>
+            <tbody>
+
+
+            {% for post in posts %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                
+                
+                <td><a href="{{ url_for('.website', post_slug = post.slug ) }}" target="_blank"><button class="btn btn-default">Website Link</button></a></td>
+                <td>{{ post.ngo }}</td>
+                <td>{{ post.main_title }}</td>
+                <td>{{ post.contact }}</td>
+                <td>{{ post.email }}</td>
+                <td><a href="/edit/{{ post.sno }}" target="_blank"><button class="btn btn-default">Edit</button></a></td>
+                <td><a data-id={{post.sno}} data-db='website' onclick="ConfirmDelete(this)"><button class="btn btn-default">Delete</button></a></td>
+               
+              </tr>
+            {% endfor %}
+
+
+
+</tbody>
+          </table>
+        </div>
+           </div>
+                
+                
+               </div> 
+
+<!-- New Section - Registered Users -->
+               <div id="registered_users" class="tabcontent">
+                 <br>
+<br>
+                <div style="overflow-x:auto;">
+   
+             
+
+<div class="topnav">
+
+
+<h2>Registered Users - Information</h2>
+
+
+</div>
+<span class="counter pull-right"></span>
+<br>
+
+
+          <div class="table-responsive">
+          <table class="table table-striped results">
+
+            <thead>
+              <tr>
+                <th>S.No </th>
+                <th>NGO</th>
+                <th>Slug</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Delete</th>
+                
+              </tr>
+               <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+            </thead>
+            <tbody>
+
+
+            {% for post in registered_users %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ post.ngo }}</td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.contact }}</td>
+                <td>{{ post.email }}</td>
+                <td>{{ post.password }}</td>
+                <td><a data-id={{post.sno}} data-db='user' onclick="ConfirmDelete(this)"><button class="btn btn-default" >Delete</button></a></td>
+               
+              </tr>
+            {% endfor %}
+
+
+
+</tbody>
+          </table>
+        </div>
+           </div>
+                
+                
+              
+              
+</div>
+
+<!-- Admin Section -->
+
+ <div id="admin" class="tabcontent">
+
+   <br>
+             <a href="/admin_register" target="_blank"><button class="btn btn-default pull-left">Create a new admin</button></a>
+
+             <br>
+             <br>
+
+              <div style="overflow-x:auto;">
+   
+             
+<div class="topnav">
+
+
+<h2>User Role - Admin</h2>
+
+
+</div>
+<span class="counter pull-right"></span>
+<br>
+
+
+          <div class="table-responsive">
+          <table class="table table-striped results">
+
+            <thead>
+              <tr>
+                <th>S.No </th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Delete</th>
+                
+              </tr>
+               <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+            </thead>
+            <tbody>
+
+
+            {% for post in admin_users %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ post.name }}</td>
+                <td>{{ post.email }}</td>
+                <td>{{ post.username }}</td>
+                <td>{{ post.password }}</td>
+                <td><a data-id={{post.sno}} data-db='user' onclick="ConfirmDelete(this)"><button class="btn btn-default" >Delete</button></a></td>
+               
+              </tr>
+            {% endfor %}
+
+
+
+</tbody>
+          </table>
+      </div>
+    </div>                
+  </div>
+
+        
+            </div>
+
+         
+    
+<!--container-fluid for Delete Modal-->
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center;">
+        <h4 class="modal-title" style="color:red;" id="deleteModalLabel">You are going to Delete this forever
+        !!</h4>
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="Delete()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

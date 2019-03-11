@@ -1,0 +1,53 @@
+{% extends "extend.html" %}
+
+{% block content_block %}
+
+<div class="space"></div>
+<div class="space"></div>
+
+<section>
+<div class="container">
+<div class="row">
+  <div class="col-sm-4">
+  <img src="../static/image/{{post.name}}/{{post.image}}" class="rounded-circle" style="width:200px; height: 200px" alt="...">
+  <br>
+    <p>{{post.name}}</p>
+  </div>
+
+  <div class="col-sm-4">
+
+  	<h4> {{post.bio}} </h4>
+  </div>
+
+  <div class="col-sm-4">
+  	<h4> Rates </h4>
+    <h4> Available Timings </h4>
+  
+    <br>
+  	<a href="{{ url_for('.appointment', username = post.username ) }}" class="btn btn-outline-primary">Contact</a>
+  </div>
+</div>
+<hr>
+</div>
+
+</section>
+<!-- Background -->
+<section>
+  <div class="container">
+    <h3> {{post.background}} </h3>
+    <hr>
+  </div>
+   
+</section>
+
+<!-- Skills & Expertise -->
+<section>
+  <div class="container">
+     
+    <h3> Skills & Expertise </h3>
+
+  </div>
+  
+</section>
+
+{% endblock %}
